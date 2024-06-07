@@ -42,11 +42,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13AB15D02C13D284004924B9 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				484BEF042AB0F7970033C07A /* HomeView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		13AB15D12C13D2A3004924B9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				48539DEC2AB0F47C005BD7C9 /* VollmedApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		484BEEF82AB0F55F0033C07A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				13AB15D12C13D2A3004924B9 /* App */,
+				13AB15D02C13D284004924B9 /* Screens */,
 				484BEEF92AB0F5630033C07A /* Components */,
-				484BEF042AB0F7970033C07A /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -98,7 +115,6 @@
 				484BEEFB2AB0F56C0033C07A /* Services */,
 				484BEEFA2AB0F5680033C07A /* Models */,
 				484BEEF82AB0F55F0033C07A /* Views */,
-				48539DEC2AB0F47C005BD7C9 /* VollmedApp.swift */,
 				48539DEE2AB0F47C005BD7C9 /* ContentView.swift */,
 				48539DF02AB0F47D005BD7C9 /* Assets.xcassets */,
 				48539DF22AB0F47D005BD7C9 /* Preview Content */,
