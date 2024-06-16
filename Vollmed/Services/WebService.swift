@@ -9,9 +9,27 @@ import Foundation
 
 struct WebService {
     
-    private let baseURL = "http://localhost:3000"
+    private let baseURL = "http://192.168.100.36:3000"
     
-    func getAllSpecialists() {
+    func getAllSpecialists() async throws -> [Specialist]? {
+        let getEndpoint = "\(baseURL)/especialista"
+        
+        guard let url = URL(string: getEndpoint) else {
+            print("URL Error")
+            return nil
+        }
+        
+        var getRequest = URLRequest(url: url)
+        getRequest.httpMethod = "GET"
+        
+        let (data, response) = try await URLSession.shared.data(for: getRequest)
+        
+        // Agora precisamos pegar a 'data', fazer JSONDecodable e fazer as? [Spealist]
+        // E depois fazer o retorno
+        
+        let dataDecode = try JSONDecoder().decode([Specialist].self, from: data)
+        return dataDecode
+        
         
     }
 }
