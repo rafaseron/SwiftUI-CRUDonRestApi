@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		134036B42C20034E00479CAD /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134036B32C20034E00479CAD /* MockData.swift */; };
 		484BEEFD2AB0F5750033C07A /* Specialist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEEFC2AB0F5750033C07A /* Specialist.swift */; };
 		484BEEFF2AB0F59D0033C07A /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEEFE2AB0F59D0033C07A /* WebService.swift */; };
 		484BEF012AB0F6090033C07A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEF002AB0F6090033C07A /* ButtonView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		134036B32C20034E00479CAD /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		484BEEFC2AB0F5750033C07A /* Specialist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specialist.swift; sourceTree = "<group>"; };
 		484BEEFE2AB0F59D0033C07A /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		484BEF002AB0F6090033C07A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
@@ -42,10 +44,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		134036B02C20031100479CAD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				134036B12C20032900479CAD /* Local */,
+				484BEEFB2AB0F56C0033C07A /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		134036B12C20032900479CAD /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				134036B22C20032E00479CAD /* Mock */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		134036B22C20032E00479CAD /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				134036B32C20034E00479CAD /* MockData.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		13AB15D02C13D284004924B9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				484BEF042AB0F7970033C07A /* HomeView.swift */,
+				48539DEE2AB0F47C005BD7C9 /* ContentView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -58,14 +86,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		484BEEF82AB0F55F0033C07A /* Views */ = {
+		484BEEF82AB0F55F0033C07A /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				13AB15D12C13D2A3004924B9 /* App */,
 				13AB15D02C13D284004924B9 /* Screens */,
 				484BEEF92AB0F5630033C07A /* Components */,
 			);
-			path = Views;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		484BEEF92AB0F5630033C07A /* Components */ = {
@@ -85,12 +113,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		484BEEFB2AB0F56C0033C07A /* Services */ = {
+		484BEEFB2AB0F56C0033C07A /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				484BEEFE2AB0F59D0033C07A /* WebService.swift */,
 			);
-			path = Services;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		48539DE02AB0F47C005BD7C9 = {
@@ -112,10 +140,9 @@
 		48539DEB2AB0F47C005BD7C9 /* Vollmed */ = {
 			isa = PBXGroup;
 			children = (
-				484BEEFB2AB0F56C0033C07A /* Services */,
+				134036B02C20031100479CAD /* Data */,
 				484BEEFA2AB0F5680033C07A /* Models */,
-				484BEEF82AB0F55F0033C07A /* Views */,
-				48539DEE2AB0F47C005BD7C9 /* ContentView.swift */,
+				484BEEF82AB0F55F0033C07A /* UI */,
 				48539DF02AB0F47D005BD7C9 /* Assets.xcassets */,
 				48539DF22AB0F47D005BD7C9 /* Preview Content */,
 			);
@@ -205,6 +232,7 @@
 				484BEEFD2AB0F5750033C07A /* Specialist.swift in Sources */,
 				484BEF012AB0F6090033C07A /* ButtonView.swift in Sources */,
 				484BEF032AB0F7080033C07A /* SpecialistCardView.swift in Sources */,
+				134036B42C20034E00479CAD /* MockData.swift in Sources */,
 				484BEEFF2AB0F59D0033C07A /* WebService.swift in Sources */,
 				48539DED2AB0F47C005BD7C9 /* VollmedApp.swift in Sources */,
 			);

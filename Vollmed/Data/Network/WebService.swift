@@ -24,12 +24,8 @@ struct WebService {
         
         let (data, response) = try await URLSession.shared.data(for: getRequest)
         
-        // Agora precisamos pegar a 'data', fazer JSONDecodable e fazer as? [Spealist]
-        // E depois fazer o retorno
-        
         let dataDecode = try JSONDecoder().decode([Specialist].self, from: data)
         return dataDecode
-        
-        
     }
+    
 }
