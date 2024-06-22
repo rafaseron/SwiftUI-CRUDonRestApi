@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var especialistasList: [Specialist] = []
+    
+    let service = WebService()
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -26,15 +30,61 @@ struct HomeView: View {
                     .foregroundColor(.accentColor)
                     .multilineTextAlignment(.center)
                     .padding(.vertical, 16)
-                ForEach(specialists) { specialist in
-                    SpecialistCardView(specialist: specialist)
-                        .padding(.bottom, 8)
+                
+                if especialistasList.isEmpty{
+                    Spacer()
+                        .frame(height: 25)
+                    
+                    Text("Estamos com problemas no momento")
+                    
+                    Spacer()
+                        .frame(height: 25)
+                    
+                    Image(systemName: "wifi.slash")
+                        .font(.system(size: 50))
+                    
+                } else {
+                    ForEach(especialistasList) { specialist in
+                        SpecialistCardView(specialist: specialist)
+                            .padding(.bottom, 8)
+                    }
                 }
+                
+                
             }
             .padding(.horizontal)
         }
         .padding(.top)
+        .onAppear{
+            Task{
+                await acessGetAllSpecialists()
+            }
+        }
+        // Também da pra usar o modificador .task -> funciona igual o onAppear + Task
+        .task {
+            //code
+        }
+        
     }
+    // MARK: - Métodos dentro de HomeView
+    func acessGetAllSpecialists() async {
+        
+        do {
+            let specialists = try await service.getAllSpecialists()
+            
+            guard let specialistas = specialists else {
+                especialistasList = []
+                return
+            }
+            
+            especialistasList = specialistas
+            
+        } catch{
+            especialistasList = []
+        }
+        
+    }
+    
 }
 
 #Preview {
