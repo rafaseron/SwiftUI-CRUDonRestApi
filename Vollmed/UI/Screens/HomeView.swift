@@ -14,7 +14,7 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack {
+            LazyVStack {
                 Image(.logo)
                     .resizable()
                     .scaledToFit()
@@ -23,11 +23,11 @@ struct HomeView: View {
                 Text("Boas-vindas!")
                     .font(.title2)
                     .bold()
-                    .foregroundColor(Color(.lightBlue))
+                    .foregroundStyle(Color(.lightBlue))
                 Text("Veja abaixo os especialistas da Vollmed disponíveis e marque já a sua consulta!")
                     .font(.title3)
                     .bold()
-                    .foregroundColor(.accentColor)
+                    .foregroundStyle(.accent)
                     .multilineTextAlignment(.center)
                     .padding(.vertical, 16)
                 
