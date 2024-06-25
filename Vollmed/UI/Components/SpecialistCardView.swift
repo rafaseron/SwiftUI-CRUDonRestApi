@@ -11,14 +11,26 @@ struct SpecialistCardView: View {
     
     var specialist: Specialist
     
+    let service = WebService()
+    @State var image: UIImage?
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 16.0) {
-                Image(.doctor)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 64, height: 64)
-                    .clipShape(Circle())
+                
+                if image == nil{
+                    Image(.doctor)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 64, height: 64)
+                        .clipShape(Circle())
+                } else {
+                    Image(uiImage: image!)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 64, height: 64)
+                        .clipShape(Circle())
+                }
                 
                 VStack(alignment: .leading, spacing: 8.0) {
                     Text(specialist.name)
@@ -34,7 +46,26 @@ struct SpecialistCardView: View {
         .padding()
         .background(Color(.lightBlue).opacity(0.15))
         .cornerRadius(16.0)
+        .task {
+            await updateDoctorImage()
+        }
     }
+    
+    // MARK: - funcoes dentro do escopo de SpecialistCardView
+    
+    func updateDoctorImage() async {
+        do{
+            guard let receivedImage = try await service.asyncImage(from: specialist.imageUrl) else {
+                return
+            }
+            image = receivedImage
+        }
+        catch{
+            print("ocorreu um erro durante atualizacao da imagem: \(error)")
+        }
+        
+    }
+    
 }
 
 #Preview {
