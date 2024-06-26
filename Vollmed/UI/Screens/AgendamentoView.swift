@@ -19,7 +19,7 @@ struct AgendamentoView: View {
                 .foregroundStyle(.accent)
                 .padding(.top)
             
-            DatePicker("Escola a data da consulta", selection: $data)
+            DatePicker("Escola a data da consulta", selection: $data, in: data...)
                 .datePickerStyle(.graphical)
             
             Button(action: {

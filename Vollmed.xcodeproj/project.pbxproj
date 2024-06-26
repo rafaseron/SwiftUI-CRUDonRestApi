@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		133AF49C2C2A8C7F008B2EE4 /* AgendamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133AF49B2C2A8C7F008B2EE4 /* AgendamentoView.swift */; };
 		134036B42C20034E00479CAD /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134036B32C20034E00479CAD /* MockData.swift */; };
+		136896262C2C017400BEBB05 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896252C2C017400BEBB05 /* Date+.swift */; };
+		136896282C2C018600BEBB05 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896272C2C018600BEBB05 /* String+.swift */; };
 		484BEEFD2AB0F5750033C07A /* Specialist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEEFC2AB0F5750033C07A /* Specialist.swift */; };
 		484BEEFF2AB0F59D0033C07A /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEEFE2AB0F59D0033C07A /* WebService.swift */; };
 		484BEF012AB0F6090033C07A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEF002AB0F6090033C07A /* ButtonView.swift */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		133AF49B2C2A8C7F008B2EE4 /* AgendamentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendamentoView.swift; sourceTree = "<group>"; };
 		134036B32C20034E00479CAD /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		136896252C2C017400BEBB05 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		136896272C2C018600BEBB05 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		484BEEFC2AB0F5750033C07A /* Specialist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specialist.swift; sourceTree = "<group>"; };
 		484BEEFE2AB0F59D0033C07A /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		484BEF002AB0F6090033C07A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
@@ -69,6 +73,15 @@
 				134036B32C20034E00479CAD /* MockData.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		136896242C2C015300BEBB05 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				136896252C2C017400BEBB05 /* Date+.swift */,
+				136896272C2C018600BEBB05 /* String+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		13AB15D02C13D284004924B9 /* Screens */ = {
@@ -143,6 +156,7 @@
 		48539DEB2AB0F47C005BD7C9 /* Vollmed */ = {
 			isa = PBXGroup;
 			children = (
+				136896242C2C015300BEBB05 /* Extensions */,
 				134036B02C20031100479CAD /* Data */,
 				484BEEFA2AB0F5680033C07A /* Models */,
 				484BEEF82AB0F55F0033C07A /* UI */,
@@ -237,6 +251,8 @@
 				484BEF012AB0F6090033C07A /* ButtonView.swift in Sources */,
 				484BEF032AB0F7080033C07A /* SpecialistCardView.swift in Sources */,
 				134036B42C20034E00479CAD /* MockData.swift in Sources */,
+				136896282C2C018600BEBB05 /* String+.swift in Sources */,
+				136896262C2C017400BEBB05 /* Date+.swift in Sources */,
 				484BEEFF2AB0F59D0033C07A /* WebService.swift in Sources */,
 				48539DED2AB0F47C005BD7C9 /* VollmedApp.swift in Sources */,
 			);
