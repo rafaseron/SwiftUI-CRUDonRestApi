@@ -26,6 +26,7 @@ struct AgendamentoView: View {
                 print("Botão de agendar consulta pressionado")
                 print(data)
                 print(data.toString())
+                print(data.toString().toReadableDate())
             }, label: {
                 ButtonView(text: "Agendar consulta")
             })
