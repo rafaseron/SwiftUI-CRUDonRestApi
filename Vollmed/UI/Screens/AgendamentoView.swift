@@ -24,6 +24,8 @@ struct AgendamentoView: View {
             
             Button(action: {
                 print("Botão de agendar consulta pressionado")
+                print(data)
+                print(data.toString())
             }, label: {
                 ButtonView(text: "Agendar consulta")
             })
@@ -33,6 +35,9 @@ struct AgendamentoView: View {
         .padding(.all)
         .navigationTitle("Agendar consulta")
         .navigationBarTitleDisplayMode(.large)
+        .onAppear{
+            UIDatePicker.appearance().minuteInterval = 15
+        }
     }
 }
 
