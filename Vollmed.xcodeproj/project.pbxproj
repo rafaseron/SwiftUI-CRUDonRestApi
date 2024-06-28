@@ -11,6 +11,7 @@
 		134036B42C20034E00479CAD /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134036B32C20034E00479CAD /* MockData.swift */; };
 		136896262C2C017400BEBB05 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896252C2C017400BEBB05 /* Date+.swift */; };
 		136896282C2C018600BEBB05 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896272C2C018600BEBB05 /* String+.swift */; };
+		1368962A2C2E5D5D00BEBB05 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896292C2E5D5D00BEBB05 /* Schedule.swift */; };
 		484BEEFD2AB0F5750033C07A /* Specialist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEEFC2AB0F5750033C07A /* Specialist.swift */; };
 		484BEEFF2AB0F59D0033C07A /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEEFE2AB0F59D0033C07A /* WebService.swift */; };
 		484BEF012AB0F6090033C07A /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484BEF002AB0F6090033C07A /* ButtonView.swift */; };
@@ -27,6 +28,7 @@
 		134036B32C20034E00479CAD /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		136896252C2C017400BEBB05 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		136896272C2C018600BEBB05 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		136896292C2E5D5D00BEBB05 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		484BEEFC2AB0F5750033C07A /* Specialist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specialist.swift; sourceTree = "<group>"; };
 		484BEEFE2AB0F59D0033C07A /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		484BEF002AB0F6090033C07A /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				484BEEFC2AB0F5750033C07A /* Specialist.swift */,
+				136896292C2E5D5D00BEBB05 /* Schedule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				484BEEFD2AB0F5750033C07A /* Specialist.swift in Sources */,
 				484BEF012AB0F6090033C07A /* ButtonView.swift in Sources */,
 				484BEF032AB0F7080033C07A /* SpecialistCardView.swift in Sources */,
+				1368962A2C2E5D5D00BEBB05 /* Schedule.swift in Sources */,
 				134036B42C20034E00479CAD /* MockData.swift in Sources */,
 				136896282C2C018600BEBB05 /* String+.swift in Sources */,
 				136896262C2C017400BEBB05 /* Date+.swift in Sources */,

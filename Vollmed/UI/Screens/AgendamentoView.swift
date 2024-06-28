@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AgendamentoView: View {
+    let specialist: Specialist
+    
     @State private var data: Date = Date()
     
     var body: some View {
@@ -27,6 +29,13 @@ struct AgendamentoView: View {
                 print(data)
                 print(data.toString())
                 print(data.toString().toReadableDate())
+                
+                // Preparativos para a requisicao
+                //specialist.id
+                //id do paciente
+                //data.toString()
+                
+                
             }, label: {
                 ButtonView(text: "Agendar consulta")
             })
@@ -43,5 +52,5 @@ struct AgendamentoView: View {
 }
 
 #Preview {
-    AgendamentoView()
+    AgendamentoView(specialist: Specialist(id: "String", name: "String", crm: "String", imageUrl: "String", specialty: "String", email: "String", phoneNumber: "String"))
 }
