@@ -22,7 +22,7 @@ struct ScheduleRequest: Codable{
     
 }
 
-// Model para fazer um GET by ID, PATCH by ID e DELETE by ID de uma consulta
+// Model para Receber um Response de um POST feito, fazer um GET, GET by ID, PATCH by ID e DELETE by ID de uma consulta, etc
 struct ScheduleResponse: Codable, Identifiable{
     let id: String
     let specialistID: String
