@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AgendamentoView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     let specialist: Specialist
     @State var scheduleResponse: String? = nil
     @State var showAlert: Bool = false
@@ -36,15 +38,36 @@ struct AgendamentoView: View {
                 
             }, label: {
                 ButtonView(text: "Agendar consulta")
-            }).alert("Agendamento de consultas", isPresented: $showAlert) {
+            }).alert("Agendamento de consultas", isPresented: $showAlert, presenting: {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Ok")
+                })
+            }, actions: { actions in
                 //actions code
-            } message: {
+            }, message: { message in
                 if scheduleResponse != nil{
                     Text(scheduleResponse!)
                 } else{
                     Text("Tivemos um problema")
                 }
-            }
+            }) // Este alert, diferente do anterior, você consegue definir como vai ser o botão, e ai pode adicionar códigos que
+               // não são aceitos dentro de um Protocol 'View'.
+            
+            // Porém não funcionou o .dimiss(), então fica o código anterior abaixo:
+            
+            
+            /*
+            .alert("Agendamento de consultas", isPresented: $showAlert, actions: {
+                //actions code
+            }, message: {
+                if scheduleResponse != nil{
+                    Text(scheduleResponse!)
+                } else{
+                    Text("Tivemos um problema")
+                }
+            })*/
 
             
         }
