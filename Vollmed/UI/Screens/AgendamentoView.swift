@@ -10,6 +10,7 @@ import SwiftUI
 struct AgendamentoView: View {
     let specialist: Specialist
     @State var scheduleResponse: String? = nil
+    @State var showAlert: Bool = false
     
     let service: WebService = WebService()
     
@@ -32,13 +33,19 @@ struct AgendamentoView: View {
                     await postSchedule()
                 }
                 
+                
             }, label: {
                 ButtonView(text: "Agendar consulta")
-            })
-           
-            if scheduleResponse != nil{
-                Text(scheduleResponse!)
+            }).alert("Agendamento de consultas", isPresented: $showAlert) {
+                //actions code
+            } message: {
+                if scheduleResponse != nil{
+                    Text(scheduleResponse!)
+                } else{
+                    Text("Tivemos um problema")
+                }
             }
+
             
         }
         .padding(.all)
@@ -62,10 +69,12 @@ struct AgendamentoView: View {
             
             // Receber a Data agendada no 'scheduleResponse'. Transformar em Data Legível ao Usuario.
             scheduleResponse = "Consulta agendada para: \(response.date.toReadableDate())"
+            showAlert = true
             
         } catch{
            
-            scheduleResponse = "Estamos com problemas ... Considere agendar com um profissional que você não tenha consultas no mesmo dia e das 7h as 19h \(error)"
+            scheduleResponse = "Oops! ... Considere agendar com um profissional que você não tenha consultas no mesmo dia e das 7h as 19h. Se os problemas persistirem, por favor entre em contato."
+            showAlert = true
             
         }
         
