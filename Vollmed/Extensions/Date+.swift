@@ -19,7 +19,7 @@ extension Date{
         
         // Crar um objeto de DateFormatter() para conseguir definir o formato desejado
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss:SSSZ"
+        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         // Retornar uma instancia com a formatacao aplicada -> From 'Date' to 'String'
         return dateFormater.string(from: self)

@@ -10,6 +10,9 @@ import UIKit
 
 struct WebService {
     
+    let patientId: String = "61c55f06-aeb9-4ef7-a706-6a29e6eccbc8"
+    
+    
     // MARK: - BASE URL
     
     private let baseURL = "http://192.168.100.36:3000"
@@ -72,6 +75,10 @@ struct WebService {
         // Fazer Enconde dos dados da aplicacao para serem enviados na Requisicao
         // Perceba que usamos o type como Request de schedule
         let data = try JSONEncoder().encode(ScheduleRequest(specialistID: specialistId, patientID: patientId, date: date))
+        
+        print("data -> \(date)")
+        print("patientId -> \(patientId)")
+        print("specialistId -> \(specialistId)")
         
         
         // Definir o método HTTP, o Body e o Header

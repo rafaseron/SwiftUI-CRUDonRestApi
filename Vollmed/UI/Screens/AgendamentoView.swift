@@ -9,6 +9,9 @@ import SwiftUI
 
 struct AgendamentoView: View {
     let specialist: Specialist
+    @State var scheduleResponse: String? = nil
+    
+    let service: WebService = WebService()
     
     @State private var data: Date = Date()
     
@@ -21,25 +24,21 @@ struct AgendamentoView: View {
                 .foregroundStyle(.accent)
                 .padding(.top)
             
-            DatePicker("Escola a data da consulta", selection: $data, in: data...)
+            DatePicker("Escola a data da consulta", selection: $data)
                 .datePickerStyle(.graphical)
             
             Button(action: {
-                print("Botão de agendar consulta pressionado")
-                print(data)
-                print(data.toString())
-                print(data.toString().toReadableDate())
-                
-                // Preparativos para a requisicao
-                //specialist.id
-                //id do paciente
-                //data.toString()
-                
+                Task{
+                    await postSchedule()
+                }
                 
             }, label: {
                 ButtonView(text: "Agendar consulta")
             })
-            
+           
+            if scheduleResponse != nil{
+                Text(scheduleResponse!)
+            }
             
         }
         .padding(.all)
@@ -49,6 +48,29 @@ struct AgendamentoView: View {
             UIDatePicker.appearance().minuteInterval = 15
         }
     }
+    
+    // MARK: - Métodos no Escopo da Struct View
+
+    func postSchedule() async {
+        
+        do{
+            // Tentando realizar o Post e já desenbrulhando a 'ScheduleResponse' que receberemos do 'postAppointment'
+            guard let response = try await service.postAppointment(specialistId: specialist.id, patientId: service.patientId, date: data.toString()) else {
+                scheduleResponse = nil
+                return
+            }
+            
+            // Receber a Data agendada no 'scheduleResponse'. Transformar em Data Legível ao Usuario.
+            scheduleResponse = "Consulta agendada para: \(response.date.toReadableDate())"
+            
+        } catch{
+           
+            scheduleResponse = "Estamos com problemas ... Considere agendar com um profissional que você não tenha consultas no mesmo dia e das 7h as 19h \(error)"
+            
+        }
+        
+    }
+    
 }
 
 #Preview {
