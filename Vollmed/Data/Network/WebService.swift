@@ -98,6 +98,26 @@ struct WebService {
         
     }
     
+    func getAppointmentsByPatientId(idPaciente: String) async throws -> [Appointment]? {
+        let endpoint: String = baseURL+"/paciente/"+idPaciente+"/consultas"
+        
+        guard let url = URL(string: endpoint) else {
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let session = try await URLSession.shared.data(for: request)
+        let data = session.0
+        let response = session.1
+        
+        let decodedData = try JSONDecoder().decode([Appointment].self, from: data)
+        return decodedData
+        
+        
+    }
+    
     func getAllAppointments(){
         let endpoint = baseURL+"/consulta"
         
