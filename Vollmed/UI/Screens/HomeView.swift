@@ -64,6 +64,7 @@ struct HomeView: View {
         .task {
             //code
         }
+        .navigationTitle("Médicos")
         
     }
     // MARK: - Métodos dentro de HomeView
