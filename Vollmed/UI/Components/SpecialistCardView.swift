@@ -52,7 +52,6 @@ struct SpecialistCardView: View {
         .task {
             await updateDoctorImage()
         }
-        .navigationTitle("Médicos")
         
         /* Para alterar o texto do BackButton do NavigationView, precisamos nomear a View que foi responsável pela navegação
            Sendo assim, por mais que o 'SpecialistCardView' está dentro de 'HomeView' e o usuário clicou no 'agendar consulta' na 'HomeView',
