@@ -11,6 +11,8 @@ struct AgendamentoView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let specialist: Specialist
+    var appointment: Appointment?
+    @State var isRescheduleView: Bool = false
     @State var scheduleResponse: String? = nil
     @State var showAlert: Bool = false
     
@@ -19,7 +21,7 @@ struct AgendamentoView: View {
     @State private var data: Date = Date()
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading, spacing: 6.0){
             Text("Selecione a data e horário da consulta")
                 .font(.title3)
                 .bold()
@@ -27,17 +29,31 @@ struct AgendamentoView: View {
                 .foregroundStyle(.accent)
                 .padding(.top)
             
+            if isRescheduleView{
+                if appointment != nil{
+                    Text("Sua data atual é: \(appointment!.appointmentDate.toReadableDate())")
+                        .bold()
+                }
+                
+            }
+            
+            
             DatePicker("Escola a data da consulta", selection: $data)
                 .datePickerStyle(.graphical)
             
             Button(action: {
                 Task{
-                    await postSchedule()
+                    if !isRescheduleView{
+                        await postSchedule()
+                    } else {
+                        // await updateSchedule
+                        print ("Rodar updateSchedule aqui")
+                    }
                 }
                 
                 
             }, label: {
-                ButtonView(text: "Agendar consulta")
+                ButtonView(text: isRescheduleView ? "Remarcar consulta" : "Agendar consulta")
             }).alert("Agendamento de consultas", isPresented: $showAlert, presenting: {
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -72,7 +88,7 @@ struct AgendamentoView: View {
             
         }
         .padding(.all)
-        .navigationTitle("Agendar consulta")
+        .navigationTitle(isRescheduleView ? "Remarcar" : "Agendar")
         .navigationBarTitleDisplayMode(.large)
         .onAppear{
             UIDatePicker.appearance().minuteInterval = 15
