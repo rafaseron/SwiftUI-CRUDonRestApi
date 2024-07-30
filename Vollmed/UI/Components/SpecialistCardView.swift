@@ -10,6 +10,8 @@ import SwiftUI
 struct SpecialistCardView: View {
     
     var specialist: Specialist
+    var isAppointmentView: Bool = false
+    var appointment: Appointment?
     
     let service = WebService()
     @State var image: UIImage?
@@ -37,13 +39,38 @@ struct SpecialistCardView: View {
                         .font(.title3)
                         .bold()
                     Text(specialist.specialty)
+                    
+                    if isAppointmentView{
+                        if appointment != nil{
+                            Text(appointment!.appointmentDate.toReadableDate())
+                                .bold()
+                        }
+                    }
+                    
                 }
             }
-            NavigationLink{
-                AgendamentoView(specialist: specialist)
-            } label: {
-                ButtonView(text: "Agendar consulta")
+            
+            if !isAppointmentView{
+                NavigationLink{
+                    AgendamentoView(specialist: specialist)
+                } label: {
+                    ButtonView(text: "Agendar consulta")
+                }
+            } else{
+                HStack{
+                    NavigationLink{
+                        AgendamentoView(specialist: specialist)
+                    } label: {
+                        ButtonView(text: "Remarcar")
+                    }
+                    Button(action: {
+                        print("botao de cancelar pressionado")
+                    }, label: {
+                        ButtonView(text: "Cancelar", buttonType: .cancel)
+                    })
+                }
             }
+            
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
@@ -52,13 +79,6 @@ struct SpecialistCardView: View {
         .task {
             await updateDoctorImage()
         }
-        
-        /* Para alterar o texto do BackButton do NavigationView, precisamos nomear a View que foi responsável pela navegação
-           Sendo assim, por mais que o 'SpecialistCardView' está dentro de 'HomeView' e o usuário clicou no 'agendar consulta' na 'HomeView',
-           na verdade quem fez a navegação foi o 'SpecialistCardView', porque é aqui que o NavigationLink se encontra.
-           Sendo assim, é aqui que devemos nomear. Importante lembrar de nomear com textos pequenos, porque se for muito maior que 'Back - 4 caracteres',
-           vai ficar com o padrao 'Back' mesmo. Aqui no caso foi nomeado apenas com 'Médicos - 7 caracteres'
-         */
         
     }
     

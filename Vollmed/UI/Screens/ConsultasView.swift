@@ -13,11 +13,13 @@ struct ConsultasView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false){
-            LazyVStack{
+            LazyVStack(spacing: 16.0){
                 ForEach(appointments){ appointment in
-                    SpecialistCardView(specialist: appointment.specialist)
+                    SpecialistCardView(specialist: appointment.specialist,
+                                       isAppointmentView: true, appointment: appointment)
                 }
             }
+            .padding(.horizontal)
         }.onAppear{
             //code
         }
