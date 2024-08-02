@@ -34,6 +34,8 @@ struct AgendamentoView: View {
                     Text("Sua data atual é: \(appointment!.appointmentDate.toReadableDate())")
                         .bold()
                     
+                    Text("Formato atual -> \(appointment!.appointmentDate)")
+                    
                     // TODO -> Atualizar o valor de 'data' com o valor da consulta atualmente marcada. 
                     //data = appointment!.appointmentDate.toDate()
                 }
