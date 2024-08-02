@@ -26,6 +26,19 @@ extension String{
         return dateFormatter.string(from: stringToDate)
     }
     
-    // TODO -> func toDate() -> Date {  }
+    // TODO -> verificar se a conversao está dando certo
+    
+     func toDate() -> Date? {
+        // acesso ao self (data) e acesso ao Self (type)
+        // Resposta atual em String -> 2024-07-02T14:36:00.000Z
+     
+         let dateFormatter = DateFormatter()
+                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                 dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Define a localidade para evitar problemas de formatação
+                 return dateFormatter.date(from: self)
+     
+     }
+    
+     
     
 }
