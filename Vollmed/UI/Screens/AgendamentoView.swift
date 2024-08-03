@@ -34,8 +34,9 @@ struct AgendamentoView: View {
                     Text("Sua data atual é: \(appointment!.appointmentDate.toReadableDate())")
                         .bold()
                     
-                    // TODO -> Atualizar o valor de 'data' com o valor da consulta atualmente marcada. 
-                    //data = appointment!.appointmentDate.toDate()
+                    // TODO -> Atualizar o valor de 'data' com o valor da consulta atualmente marcada. >> A funcao ta pronta <<
+                    // getDateOnRescheduleView()
+                    // Preciso conseguir executar essa funcao no escopo de View
                 }
                 
             }else {
@@ -121,6 +122,15 @@ struct AgendamentoView: View {
             showAlert = true
             
         }
+        
+    }
+    
+    func getDateOnRescheduleView(){
+        guard let receivedDate = appointment!.appointmentDate.toDate() else{
+            return
+        }
+        
+        data = receivedDate
         
     }
     
