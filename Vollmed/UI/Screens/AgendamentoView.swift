@@ -29,20 +29,16 @@ struct AgendamentoView: View {
                 .foregroundStyle(.accent)
                 .padding(.top)
             
+            // Conteúdo visual da RescheduleView -> Text com Data atual, atualizar o date do DatePicker com a Data atual
             if isRescheduleView{
                 if appointment != nil{
                     Text("Sua data atual é: \(appointment!.appointmentDate.toReadableDate())")
                         .bold()
-                    
-                    // TODO -> Atualizar o valor de 'data' com o valor da consulta atualmente marcada. >> A funcao ta pronta <<
-                    // getDateOnRescheduleView()
-                    // Preciso conseguir executar essa funcao no escopo de View
+                        .task {
+                            getDateOnRescheduleView()
+                        }
                 }
-                
-            }else {
-                Text("Data no padrao do Swift -> \(data)")
             }
-            
             
             DatePicker("Escola a data da consulta", selection: $data)
                 .datePickerStyle(.graphical)
