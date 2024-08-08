@@ -56,7 +56,7 @@ struct AgendamentoView: View {
                 
             }, label: {
                 ButtonView(text: isRescheduleView ? "Remarcar consulta" : "Agendar consulta")
-            }).alert("Agendamento de consultas", isPresented: $showAlert, presenting: {
+            }).alert(isRescheduleView ? "Remarcar consulta" : "Agendar consulta", isPresented: $showAlert, presenting: {
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }, label: {
