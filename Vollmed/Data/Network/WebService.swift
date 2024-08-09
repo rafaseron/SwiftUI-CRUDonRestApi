@@ -118,6 +118,18 @@ struct WebService {
         
     }
     
+    // TODO
+    func updateAppointment(){
+        let endpoint = baseURL+"/consulta/:id"
+        // método http -> PATCH
+    }
+    
+    // TODO
+    func deleteAppointment(){
+        let endpoint = baseURL+"/consulta/:id"
+    }
+    
+    /*
     func getAllAppointments(){
         let endpoint = baseURL+"/consulta"
         
@@ -126,15 +138,7 @@ struct WebService {
     func getAppointmentById(){
         let endpoint = baseURL+"/consulta/:id"
     }
-    
-    func updateAppointment(){
-        let endpoint = baseURL+"/consulta/:id"
-        // método http -> PATCH
-    }
-    
-    func deleteAppointment(){
-        let endpoint = baseURL+"/consulta/:id"
-    }
+     */
     
     
 }
