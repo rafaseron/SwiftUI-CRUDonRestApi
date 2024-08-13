@@ -19,3 +19,8 @@ struct Appointment: Identifiable, Codable{
     }
     
 }
+
+struct AppointmentRequest: Encodable{
+    let date: String
+    let appointmentId: String
+}

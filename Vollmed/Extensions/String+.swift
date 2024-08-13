@@ -34,7 +34,7 @@ extension String{
      
          let dateFormatter = DateFormatter()
                  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                 dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Define a localidade para evitar problemas de formatação
+                 dateFormatter.locale = Locale(identifier: "pt_BR") // Define a localidade para evitar problemas de formatação
                  return dateFormatter.date(from: self)
      
      }

@@ -118,10 +118,53 @@ struct WebService {
         
     }
     
-    // TODO
-    func updateAppointment(){
-        let endpoint = baseURL+"/consulta/:id"
-        // método http -> PATCH
+    func updateAppointment(appointmentRequest: AppointmentRequest) async throws{
+        
+        // Preparar URL
+        let endpoint = baseURL+"/consulta/"+appointmentRequest.appointmentId
+        guard let url = URL(string: endpoint) else{
+            return
+        }
+        
+        // Preparar Request
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        
+        // Preparar Body do Request
+        do{
+            let body = try JSONEncoder().encode(appointmentRequest.date)
+            request.httpBody = body
+        } catch{
+            print(error)
+            return
+        }
+        
+        // Iniciar a Sessao
+        let session = try await URLSession.shared.data(for: request)
+        let data = session.0
+        //let response = session.1
+        
+        /* Essa aqui é a Response que a API
+         
+         // QUANDO FALHA -> 400 Bad Request
+         {
+           "status": 400,
+           "message": "A consulta deve ser agendada com 30 minutos de antecedência"
+         }
+         
+         
+         // QUANDO DA CERTO -> 200 OK
+         {
+           "especialista": "27fea026-10a2-49a0-879c-3d355010bf65",
+           "paciente": "61c55f06-aeb9-4ef7-a706-6a29e6eccbc8",
+           "data": "2024-08-09T14:36:00.000Z",
+           "motivoCancelamento": null,
+           "id": "4bf622ee-9627-473e-a36c-69130a3e3380"
+         }
+         
+         */
+        
+        
     }
     
     // TODO
