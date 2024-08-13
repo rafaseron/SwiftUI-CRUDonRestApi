@@ -110,7 +110,7 @@ struct WebService {
         
         let session = try await URLSession.shared.data(for: request)
         let data = session.0
-        let response = session.1
+        //let response = session.1
         
         let decodedData = try JSONDecoder().decode([Appointment].self, from: data)
         return decodedData
@@ -118,12 +118,12 @@ struct WebService {
         
     }
     
-    func updateAppointment(appointmentRequest: AppointmentRequest) async throws{
+    func updateAppointment(appointmentRequest: AppointmentRequest) async throws -> AppointmentResponse?{
         
         // Preparar URL
         let endpoint = baseURL+"/consulta/"+appointmentRequest.appointmentId
         guard let url = URL(string: endpoint) else{
-            return
+            return nil
         }
         
         // Preparar Request
@@ -131,26 +131,22 @@ struct WebService {
         request.httpMethod = "PATCH"
         
         // Preparar Body do Request
-        do{
-            let body = try JSONEncoder().encode(appointmentRequest.date)
-            request.httpBody = body
-        } catch{
-            print(error)
-            return
-        }
+        let body = try JSONEncoder().encode(appointmentRequest.date)
+        request.httpBody = body
         
         // Iniciar a Sessao
         let session = try await URLSession.shared.data(for: request)
         let data = session.0
         //let response = session.1
         
-        /* Essa aqui é a Response que a API
+        /* Essa aqui é a Response que a API - Excluir depois
          
          // QUANDO FALHA -> 400 Bad Request
          {
            "status": 400,
            "message": "A consulta deve ser agendada com 30 minutos de antecedência"
          }
+         
          
          
          // QUANDO DA CERTO -> 200 OK
@@ -163,6 +159,9 @@ struct WebService {
          }
          
          */
+        
+        let response = try JSONDecoder().decode(AppointmentResponse.self, from: data)
+        return response
         
         
     }
