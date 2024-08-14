@@ -167,8 +167,29 @@ struct WebService {
     }
     
     // TODO
-    func deleteAppointment(){
-        let endpoint = baseURL+"/consulta/:id"
+    func deleteAppointment(appointmentId: String, cancelReason: String) async throws /*-> DeleteResponse?*/{
+        
+        // Preparar a URL
+        let endpoint = baseURL+"/consulta/"+appointmentId
+        
+        guard let url = URL(string: endpoint) else {
+            return
+            //return nil
+        }
+        
+        // Preparar Request
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        // Preparar o Body do Request
+        request.httpBody = try JSONEncoder().encode(cancelReason)
+        
+        // Iniciar a Sessao
+        let session = try await URLSession.shared.data(for: request)
+        let data = session.0
+        // let DecodedData = JSONDecoder().decode(DeleteResponse.self, from: data)
+        // return DeleteResponse
+        
     }
     
     /*
