@@ -48,7 +48,7 @@ struct AgendamentoView: View {
                     if !isRescheduleView{
                         await postSchedule()
                     } else {
-                        // await updateSchedule
+                        await updateSchedule()
                         print ("Rodar updateSchedule aqui")
                     }
                 }
@@ -129,6 +129,20 @@ struct AgendamentoView: View {
         data = receivedDate
         
     }
+    
+    func updateSchedule() async{
+        do {
+            if appointment != nil {
+                guard let scheduleResponse = try await service.updateAppointment(newDate: data.toString(), appointmentId: appointment!.id) else {
+                    return
+                }
+            }
+            }catch {
+            print(error)
+        }
+        
+    }
+    
     
 }
 
