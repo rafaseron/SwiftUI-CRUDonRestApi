@@ -20,12 +20,22 @@ struct Appointment: Identifiable, Codable{
     
 }
 
+/* Para fins didáticos, fazendo 'updateAppointment' com um 'Dictionary [String : String]' e um 'appointmentId: String'
 struct AppointmentRequest: Encodable{
     let date: String
     let appointmentId: String
-}
+ 
+    enum CodingKeys: String, CodingKey{
+        case date = "data"
+        case appointmentId
+    }
+ 
+}*/
+ 
 
-struct AppointmentResponse: Decodable{
+// Para reutilizar os Modelos, será usado apenas o modelo do ScheduleResponse
+/*
+struct AppointmentResponse: Codable{
     
     // case failure
     let status: Int
@@ -45,9 +55,7 @@ struct AppointmentResponse: Decodable{
         case patient = "paciente"
         case date = "data"
         case cancelReason = "motivoCancelamento"
-        case iD = "id"
-        
-        
+        case Id = "id"
     }
     
-}
+}*/
