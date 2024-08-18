@@ -118,10 +118,10 @@ struct WebService {
         
     }
     
-    func updateAppointment(appointmentRequest: AppointmentRequest) async throws -> AppointmentResponse?{
+    func updateAppointment(newDate: String, appointmentId: String) async throws -> ScheduleResponse?{
         
         // Preparar URL
-        let endpoint = baseURL+"/consulta/"+appointmentRequest.appointmentId
+        let endpoint = baseURL+"/consulta/"+appointmentId
         guard let url = URL(string: endpoint) else{
             return nil
         }
@@ -129,42 +129,52 @@ struct WebService {
         // Preparar Request
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type") // especificar o tipo de conteúdo para a API - necessário
         
         // Preparar Body do Request
-        let body = try JSONEncoder().encode(appointmentRequest.date)
+        let messageDictionary: [String : String] = ["data" : "\(newDate)"]
+        let body = try JSONEncoder().encode(messageDictionary)
         request.httpBody = body
+        
+        // Preparar Body do Request - método feito pela Giovanna
+        //let messageDictionary: [String : String] = ["data" : "\(newDate)"]
+        //let body = try JSONSerialization.data(withJSONObject: messageDictionary)
+        //request.httpBody = body
         
         // Iniciar a Sessao
         let session = try await URLSession.shared.data(for: request)
         let data = session.0
         //let response = session.1
         
-        /* Essa aqui é a Response que a API - Excluir depois
-         
-         // QUANDO FALHA -> 400 Bad Request
-         {
-           "status": 400,
-           "message": "A consulta deve ser agendada com 30 minutos de antecedência"
-         }
-         
-         
-         
-         // QUANDO DA CERTO -> 200 OK
-         {
-           "especialista": "27fea026-10a2-49a0-879c-3d355010bf65",
-           "paciente": "61c55f06-aeb9-4ef7-a706-6a29e6eccbc8",
-           "data": "2024-08-09T14:36:00.000Z",
-           "motivoCancelamento": null,
-           "id": "4bf622ee-9627-473e-a36c-69130a3e3380"
-         }
-         
-         */
-        
-        let response = try JSONDecoder().decode(AppointmentResponse.self, from: data)
+        let response = try JSONDecoder().decode(ScheduleResponse.self, from: data)
         return response
         
-        
     }
+    
+    
+    /* Essa aqui é a Response que a API - Excluir depois
+     
+     // QUANDO FALHA -> 400 Bad Request
+     {
+       "status": 400,
+       "message": "A consulta deve ser agendada com 30 minutos de antecedência"
+     }
+     
+     
+     
+     // QUANDO DA CERTO -> 200 OK
+     {
+       "especialista": "27fea026-10a2-49a0-879c-3d355010bf65",
+       "paciente": "61c55f06-aeb9-4ef7-a706-6a29e6eccbc8",
+       "data": "2024-08-09T14:36:00.000Z",
+       "motivoCancelamento": null,
+       "id": "4bf622ee-9627-473e-a36c-69130a3e3380"
+     }
+     
+     */
+    
+    
+    
     
     // TODO
     func deleteAppointment(appointmentId: String, cancelReason: String) async throws /*-> DeleteResponse?*/{
@@ -180,9 +190,11 @@ struct WebService {
         // Preparar Request
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // Preparar o Body do Request
-        request.httpBody = try JSONEncoder().encode(cancelReason)
+        let cancelReasonDictionary: [String : String] = ["motivo_cancelamento" : cancelReason]
+        request.httpBody = try JSONEncoder().encode(cancelReasonDictionary)
         
         // Iniciar a Sessao
         let session = try await URLSession.shared.data(for: request)
