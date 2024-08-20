@@ -136,9 +136,15 @@ struct AgendamentoView: View {
                 guard let scheduleResponse = try await service.updateAppointment(newDate: data.toString(), appointmentId: appointment!.id) else {
                     return
                 }
-            }
+                }
+            
+            scheduleResponse = "Sua consulta foi remarcada com sucesso"
+            showAlert = true
+            
             }catch {
             print(error)
+                scheduleResponse = "Oops! ocorreu um erro ao remarcar a consulta. Se atente ao horário do consultório e tente novamente"
+                showAlert = true
         }
         
     }
