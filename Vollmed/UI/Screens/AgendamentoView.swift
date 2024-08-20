@@ -19,6 +19,8 @@ struct AgendamentoView: View {
     let service: WebService = WebService()
     
     @State private var data: Date = Date()
+    @State private var isAtualDateChanged: Bool = false
+    @State private var newDate: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6.0){
@@ -32,11 +34,21 @@ struct AgendamentoView: View {
             // Conteúdo visual da RescheduleView -> Text com Data atual, atualizar o date do DatePicker com a Data atual
             if isRescheduleView{
                 if appointment != nil{
-                    Text("Sua data atual é: \(appointment!.appointmentDate.toReadableDate())")
-                        .bold()
-                        .task {
-                            getDateOnRescheduleView()
-                        }
+                    
+                    if !isAtualDateChanged {
+                        Text("Sua data atual é: \(appointment!.appointmentDate.toReadableDate())")
+                            .bold()
+                            .task {
+                                getDateOnRescheduleView()
+                            }
+                    } else{
+                        Text("Sua data atual é: \(newDate)")
+                            .bold()
+                            .task {
+                                getDateOnRescheduleView()
+                            }
+                    }
+                    
                 }
             }
             
@@ -133,13 +145,16 @@ struct AgendamentoView: View {
     func updateSchedule() async{
         do {
             if appointment != nil {
-                guard let scheduleResponse = try await service.updateAppointment(newDate: data.toString(), appointmentId: appointment!.id) else {
+                guard let updateScheduleResponse = try await service.updateAppointment(newDate: data.toString(), appointmentId: appointment!.id) else {
                     return
                 }
+                
+                scheduleResponse = "Sua consulta foi remarcada com sucesso"
+                isAtualDateChanged = true
+                newDate = updateScheduleResponse.date.toReadableDate()
+                showAlert = true
+                
                 }
-            
-            scheduleResponse = "Sua consulta foi remarcada com sucesso"
-            showAlert = true
             
             }catch {
             print(error)
