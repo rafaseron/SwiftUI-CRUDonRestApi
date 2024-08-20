@@ -12,6 +12,7 @@
 		136896262C2C017400BEBB05 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896252C2C017400BEBB05 /* Date+.swift */; };
 		136896282C2C018600BEBB05 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896272C2C018600BEBB05 /* String+.swift */; };
 		1368962A2C2E5D5D00BEBB05 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136896292C2E5D5D00BEBB05 /* Schedule.swift */; };
+		136EB13C2C754531001FEFF5 /* CancelAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136EB13B2C754531001FEFF5 /* CancelAppointmentView.swift */; };
 		1385BA902C34307D00FC1874 /* ConsultasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385BA8F2C34307D00FC1874 /* ConsultasView.swift */; };
 		1385BA932C34315600FC1874 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1385BA922C34315600FC1874 /* AppTabView.swift */; };
 		13C878542C56373200849FE2 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C878532C56373200849FE2 /* Appointment.swift */; };
@@ -32,6 +33,7 @@
 		136896252C2C017400BEBB05 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		136896272C2C018600BEBB05 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		136896292C2E5D5D00BEBB05 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		136EB13B2C754531001FEFF5 /* CancelAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAppointmentView.swift; sourceTree = "<group>"; };
 		1385BA8F2C34307D00FC1874 /* ConsultasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultasView.swift; sourceTree = "<group>"; };
 		1385BA922C34315600FC1874 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		13C878532C56373200849FE2 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				48539DEE2AB0F47C005BD7C9 /* ContentView.swift */,
 				133AF49B2C2A8C7F008B2EE4 /* AgendamentoView.swift */,
 				1385BA8F2C34307D00FC1874 /* ConsultasView.swift */,
+				136EB13B2C754531001FEFF5 /* CancelAppointmentView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				484BEEFD2AB0F5750033C07A /* Specialist.swift in Sources */,
 				1385BA932C34315600FC1874 /* AppTabView.swift in Sources */,
 				484BEF012AB0F6090033C07A /* ButtonView.swift in Sources */,
+				136EB13C2C754531001FEFF5 /* CancelAppointmentView.swift in Sources */,
 				484BEF032AB0F7080033C07A /* SpecialistCardView.swift in Sources */,
 				1368962A2C2E5D5D00BEBB05 /* Schedule.swift in Sources */,
 				1385BA902C34307D00FC1874 /* ConsultasView.swift in Sources */,
