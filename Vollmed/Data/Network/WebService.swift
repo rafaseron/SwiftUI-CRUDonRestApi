@@ -177,7 +177,7 @@ struct WebService {
     
     
     // TODO
-    func deleteAppointment(appointmentId: String, cancelReason: String) async throws /*-> DeleteResponse?*/{
+    func deleteAppointment(appointmentId: String, cancelReason: String?) async throws /*-> DeleteResponse?*/{
         
         // Preparar a URL
         let endpoint = baseURL+"/consulta/"+appointmentId
@@ -193,7 +193,7 @@ struct WebService {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // Preparar o Body do Request
-        let cancelReasonDictionary: [String : String] = ["motivo_cancelamento" : cancelReason]
+        let cancelReasonDictionary: [String : String?] = ["motivo_cancelamento" : cancelReason]
         request.httpBody = try JSONEncoder().encode(cancelReasonDictionary)
         
         // Iniciar a Sessao
