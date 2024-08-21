@@ -8,15 +8,28 @@
 import SwiftUI
 
 struct CancelAppointmentView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    let service = WebService()
+    let appointmentId: String?
+    
     @State private var newTextValue: String = ""
+    @State private var isShowAlert: Bool = false
+    @State private var responseMessage: String = ""
     
     var body: some View {
-        LazyVStack(spacing: 16){
+        LazyVStack(spacing: 8){
             Text("Qual seria o motivo do cancelamento?")
                 .font(.title3)
                 .bold()
                 .foregroundStyle(.accent)
                 .padding(.top)
+            
+            Text("cancelamentos são permitidos somente com antecedência mínima de 1 dia")
+                .font(.title3)
+                .bold()
+                .foregroundStyle(.cancel)
+                .padding(.bottom)
             
             
             TextEditor(text: $newTextValue)
@@ -31,20 +44,50 @@ struct CancelAppointmentView: View {
                 
             
             Button(action: {
-                print("Botao de Cancelar pressionado")
-                // await onDeleteClick()
+                Task{
+                    await onDeleteClick()
+                }
                 
             }, label: {
                 ButtonView(text: "Cancelar consulta", buttonType: .cancel)
                     .padding(.horizontal)
+            }).alert("Cancelamento", isPresented: $isShowAlert, presenting: {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("OK")
+                })
+            }, actions: { _ in
+                Text("OK")
+                
+            }, message: { _ in
+                Text(responseMessage)
             })
             
         }.navigationTitle("Cancelar")
             .navigationBarTitleDisplayMode(.large)
         
     }
+    // MARK: - Escopo da Struct CancelAppointmentView
+    
+    func onDeleteClick() async{
+        guard let Id = appointmentId else {
+            return
+        }
+        do{
+            try await service.deleteAppointment(appointmentId: Id, cancelReason: newTextValue)
+            responseMessage = "Pedido de cancelamento enviado"
+            isShowAlert = true
+        }catch{
+            print(error)
+            responseMessage = "Erro ao tentar cancelar"
+            isShowAlert = true
+        }
+        
+    }
+    
 }
 
 #Preview {
-    CancelAppointmentView()
+    CancelAppointmentView(appointmentId: "")
 }
