@@ -174,9 +174,6 @@ struct WebService {
      */
     
     
-    
-    
-    // TODO
     func deleteAppointment(appointmentId: String, cancelReason: String) async throws -> Bool{
         
         // Preparar a URL
