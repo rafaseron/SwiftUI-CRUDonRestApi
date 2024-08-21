@@ -177,14 +177,13 @@ struct WebService {
     
     
     // TODO
-    func deleteAppointment(appointmentId: String, cancelReason: String) async throws /*-> DeleteResponse?*/{
+    func deleteAppointment(appointmentId: String, cancelReason: String) async throws -> Bool{
         
         // Preparar a URL
         let endpoint = baseURL+"/consulta/"+appointmentId
         
         guard let url = URL(string: endpoint) else {
-            return
-            //return nil
+            return false
         }
         
         // Preparar Request
@@ -198,11 +197,33 @@ struct WebService {
         
         // Iniciar a Sessao
         let session = try await URLSession.shared.data(for: request)
-        let data = session.0
-        // let DecodedData = JSONDecoder().decode(DeleteResponse.self, from: data)
-        // return DeleteResponse
+        let response = session.1
         
+        guard let httpResponse = response as? HTTPURLResponse else{
+            return false
+        }
+        
+        if httpResponse.statusCode != 200{
+            return false
+        }
+        
+       return true
     }
+    
+    // MARK: - Respostas da DeleteResponse
+    /*
+        // Case failure
+     {
+       "status": 400,
+       "message": "A consulta deve ser desmarcada com 1 dia de antecedência"
+     }
+     
+        // Case sucess
+     "Consulta cancelada com sucesso"
+     
+     
+     */
+    
     
     /*
     func getAllAppointments(){

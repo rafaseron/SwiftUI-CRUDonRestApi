@@ -15,7 +15,7 @@ struct CancelAppointmentView: View {
     
     @State private var newTextValue: String = ""
     @State private var isShowAlert: Bool = false
-    @State private var responseMessage: String = ""
+    @State private var responseMessage: String = "A consulta deve ser desmarcada com 1 dia de antecedência"
     
     var body: some View {
         LazyVStack(spacing: 8){
@@ -75,9 +75,15 @@ struct CancelAppointmentView: View {
             return
         }
         do{
-            try await service.deleteAppointment(appointmentId: Id, cancelReason: newTextValue)
-            responseMessage = "Pedido de cancelamento enviado"
+            let deleteResponse = try await service.deleteAppointment(appointmentId: Id, cancelReason: newTextValue)
+            
+            if deleteResponse{
+                responseMessage = "Pedido de cancelamento enviado"
+                isShowAlert = true
+            }
+            
             isShowAlert = true
+            
         }catch{
             print(error)
             responseMessage = "Erro ao tentar cancelar"
