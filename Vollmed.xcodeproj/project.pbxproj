@@ -203,8 +203,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				13A2B2D02C8FB5B2009689C4 /* PBXTargetDependency */,
 			);
 			name = Vollmed;
+			packageProductDependencies = (
+			);
 			productName = Vollmed;
 			productReference = 48539DE92AB0F47C005BD7C9 /* Vollmed.app */;
 			productType = "com.apple.product-type.application";
@@ -233,6 +236,9 @@
 				Base,
 			);
 			mainGroup = 48539DE02AB0F47C005BD7C9;
+			packageReferences = (
+				13A2B2CC2C8FA01A009689C4 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = 48539DEA2AB0F47C005BD7C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -279,6 +285,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13A2B2D02C8FB5B2009689C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 13A2B2CF2C8FB5B2009689C4 /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		48539DF52AB0F47D005BD7C9 /* Debug */ = {
@@ -478,6 +491,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		13A2B2CC2C8FA01A009689C4 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		13A2B2CF2C8FB5B2009689C4 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13A2B2CC2C8FA01A009689C4 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48539DE12AB0F47C005BD7C9 /* Project object */;
 }
